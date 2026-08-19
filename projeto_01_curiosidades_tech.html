@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curiosidades Tech Interativo</title>
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --text-primary: #1e293b;
+            --card-bg: #ffffff;
+            --cor-secundaria: #38bdf8;
+            --btn-bg: #0284c7;
+            --btn-text: #ffffff;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .tema-escuro {
+            --bg-primary: #0f172a;
+            --text-primary: #f8fafc;
+            --card-bg: #1e293b;
+            --cor-secundaria: #f59e0b;
+            --btn-bg: var(--cor-secundaria);
+            --btn-text: #0f172a;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .btn-tema {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .feed {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        article {
+            background-color: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        article:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        .author {
+            font-size: 0.9em;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .reactions {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .btn-react {
+            background: rgba(0,0,0,0.05);
+            border: 1px solid #cbd5e1;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Curiosidades Tech</h1>
+        <button class="btn-tema" id="toggleTema">Alternar Tema</button>
+    </header>
+
+    <main class="feed">
+        <article>
+            <div class="author">Por: Giuliana Cestari | Fonte: TecMundo</div>
+            <h2>O primeiro mouse não era de plástico</h2>
+            <p>Antes do design ergonômico e das luzes RGB, o primeiro mouse do mundo foi construído em madeira! Criado por Douglas Engelbart em 1964, ele tinha o formato de uma caixa quadrada e apenas um botão.</p>
+            <div class="reactions">
+                <button class="btn-react" onclick="curtir(this)">❤️ <span>0</span></button>
+                <button class="btn-react" onclick="curtir(this)">👍 <span>0</span></button>
+            </div>
+        </article>
+    </main>
+
+    <script>
+        document.getElementById('toggleTema').addEventListener('click', () => {
+            document.body.classList.toggle('tema-escuro');
+        });
+
+        function curtir(btn) {
+            const span = btn.querySelector('span');
+            span.textContent = parseInt(span.textContent) + 1;
+        }
+    </script>
+</body>
+</html>
